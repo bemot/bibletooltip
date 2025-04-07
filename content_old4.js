@@ -1,6 +1,7 @@
 // Improved Bible verse regular expression to handle various scenarios
 const verseRegex =
   /(?:^|\s|\()([1-3]?\s*[A-Za-zА-Яа-яіїєІЇЄ]+(?:\s+[A-Za-zА-Яа-яіїєІЇЄ]+)*\s+\d{1,3}[.:]\d{1,3})(?=\s|\)|$|[.,;?!])/g;
+
 let bibleData = null;
 let fuse = null;
 
@@ -142,5 +143,3 @@ if (document.readyState === "loading") {
 } else {
   loadBibleData();
 }
-
-//const verseRegex = /(?:\b|\()([1-3]? ?[A-Za-zА-Яа-яіїєІЇЄ]+(?: [A-Za-zА-Яа-яіїєІЇЄ]+)* ?\d{1,3}[.:]\d{1,3})(?=\s|\)|$|[.,;?!])/g;

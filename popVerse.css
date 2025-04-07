@@ -1,0 +1,462 @@
+
+body {	
+	height: auto;
+}
+
+span.capt {
+	font-family: Verdana, Calibri, Geneva, sans-serif;
+	font-size: 10pt;
+	font-weight: bold;
+	color: #7F2222;
+	display: block;
+	margin: .3em .6em .3em .6em;
+	padding: 0 0 .3em 0;
+	border-bottom: solid 1px;
+}
+
+span.foot {
+	font-family: Verdana, Calibri, Geneva, sans-serif;
+	color: #000000;
+	text-align: center;
+	padding: 0.2em 0 0 0;
+	font-size: .8em;
+	color: gray;
+	display: block;
+	margin-top: 6px;
+}
+
+.vsHilite {
+	background-color: #E6E6FD !important;
+	padding: 3px;
+	text-indent: 1em;
+}
+
+.body1 {
+	background-color: #FCFCFC;
+	background-position: center center;
+	background-repeat: repeat-y;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1em;
+}
+
+p.center {
+	text-align: center;
+}
+
+table.border {
+	border: 1px solid #D7C08B;
+	padding: 15px;
+}
+
+.head1, .vl-head1 {
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 252, 237)), to(rgb(247, 242, 187)));
+	padding: 5px;
+	border-radius: 5px;
+	border: 2px solid #C1C1C1;
+}
+
+.footer {
+	text-align: center;
+	font-size: .8em;
+}
+
+.foot1, .vl-foot1 {
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 252, 237)), to(rgb(247, 242, 187)));
+	padding: 8px;
+	/*border-radius: 5px;*/
+	border: 2px solid #C1C1C1;
+}
+
+.foot1 {
+   position: sticky;
+   left: 0px;
+   bottom: 0px;
+}
+
+h1.bib {
+	color: #990000;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 22px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 0px;
+	margin-top: 5px;
+}
+
+h2.bib {
+	color: #990000;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+.chapHead2 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 15px;
+	text-align: center;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+.popFoot {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 11px;
+	text-align: center;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+.leftcol {
+	width: 35px;
+	float: left;
+	padding-right: 10px;
+}
+
+.middlecol {
+	float: left;
+	width: 100%;
+}
+
+.rightcol {
+	width: 35px;
+	float: right;
+	padding-left: 10px;
+}
+
+.pvbutton {
+	background-color: #FFFEF5;
+	height: 100%;
+	width: 30px;
+	text-align: center;
+	font-size: 16px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+.vericaltext {
+	width: 1px;
+	word-wrap: break-word;
+	font-family: monospace;
+	/* this is just for good looks */
+	white-space: pre;
+	/* this is for displaying whitespaces */
+}
+
+.btnchap {
+	height: 21px;
+	width: 50px;
+	text-align: center;
+	font-size: 14px;
+    font-weight: bold;
+    color: brown;
+	-webkit-transition-duration: 0.4s;
+	cursor: pointer;
+	border-radius: 3px;
+	background-color: #F1F1F1;
+	border: 1px solid #9299EF;
+}
+
+.btnchap:hover {
+	background-color: #E8D588;
+}
+
+a:link {
+	text-decoration: none;
+	color: #4B50B7;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #4B50B7;
+}
+
+.xref {
+	font-size: .8em;
+	padding: 3px;
+	-webkit-user-select: none;
+}
+
+.cmn-toggle {
+	position: absolute;
+	margin-left: -9999px;
+	visibility: hidden;
+}
+
+.cmn-toggle+label {
+	display: block;
+	position: relative;
+	cursor: pointer;
+	outline: none;
+	user-select: none;
+}
+
+input.cmn-toggle-yes-no+label {
+	padding: 3px;
+	width: 50px;
+	height: 20px;
+}
+
+input.cmn-toggle-yes-no+label:before,
+input.cmn-toggle-yes-no+label:after {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	color: #444444;
+	font-family: "Verdana", sans-serif;
+	font-size: 13px;
+	text-align: center;
+	line-height: 18px;
+	border: 1px solid #989898;
+	margin-top: 5px;
+	border-radius: 3px;
+}
+
+input.cmn-toggle-yes-no+label:before {
+	background-color: #dddddd;
+	content: attr(data-off);
+	transition: transform 0.5s;
+	backface-visibility: hidden;
+}
+
+input.cmn-toggle-yes-no+label:after {
+	background-color: #E8D588;
+	content: attr(data-on);
+	transition: transform 0.5s;
+	transform: rotateY(180deg);
+	backface-visibility: hidden;
+}
+
+input.cmn-toggle-yes-no:checked+label:before {
+	transform: rotateY(180deg);
+}
+
+input.cmn-toggle-yes-no:checked+label:after {
+	transform: rotateY(0);
+}
+
+.controls {
+	background: #FCFCFC;
+	position: sticky;
+	top: 0;
+	border-bottom: 2px solid #C1C1C1;
+}
+
+#editor-old {
+	width: 100%;
+	height: 100%;
+}
+
+#toolPanel {
+	position: sticky;
+	top: 0;
+}
+
+#editor {
+	width: 100%;
+	min-height: 150px;
+	border: 1px solid gray;
+	flex: 1;
+}
+
+.clipHead {
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+.button-head {
+	text-align: center;
+}
+
+.button-group {
+	text-align: center;
+	padding-top: 2px;
+	padding-bottom: 0px;
+	display: flex;
+}
+
+
+#search-details {
+	text-align: center;
+	margin-top: 10px;
+	border-radius: 5px;
+	border: 2px solid #C1C1C1;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 252, 237)), to(rgb(247, 242, 187)));
+}
+
+#search-hits {
+	margin-top: 0px;
+}
+	
+
+.alt-verse:nth-of-type(odd) {
+	/*background: #FCF8DB;*/
+	padding: 3px;
+	text-indent: 1em;
+}
+
+.alt-verse:nth-of-type(even) {
+	padding: 3px;
+	text-indent: 1em;
+}
+
+.verse {
+	text-indent: 1em;
+}
+
+mark {
+	background-color: #E6E6FD;
+}
+
+textareaa {
+    font: 15px Verdana, sans-serif;
+}
+
+
+
+/*Search visual graph*/
+
+#visualHolder {
+	position: sticky;
+	top: 0;
+	background-color: #FCFCFC;
+	padding-bottom: 18px;
+	padding-top: 3px;
+	border-bottom: solid 2px #ddd;
+	
+}
+
+.search-visual {
+	height: 42px;
+	border-bottom: solid 1px #999;
+	padding: 0 5px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+.search-visual-label {
+	position: absolute;
+	font-size: 11px;
+	min-width: 50px;
+	height: 20px;
+	text-align: center;
+}
+
+.search-result-book-bar {
+	height: 40px;
+	display: block;
+	float: left;
+	cursor: pointer;
+}
+
+.search-result-book-bar span {
+	height: 40px;
+	display: block;
+	background: #ccc;
+	border-right: solid 1px #fff;
+}
+
+/* penta */
+.search-result-book-bar span.divisionid-Gen,
+.search-result-book-bar span.divisionid-Exo,
+.search-result-book-bar span.divisionid-Lev,
+.search-result-book-bar span.divisionid-Num,
+.search-result-book-bar span.divisionid-Deu {
+	background: #9bd79b;
+}
+
+.search-result-book-bar span.divisionid-Jos,
+.search-result-book-bar span.divisionid-Jdg,
+.search-result-book-bar span.divisionid-Rth,
+.search-result-book-bar span.divisionid-1Sa,
+.search-result-book-bar span.divisionid-2Sa,
+.search-result-book-bar span.divisionid-1Ki,
+.search-result-book-bar span.divisionid-2Ki,
+.search-result-book-bar span.divisionid-1Ch,
+.search-result-book-bar span.divisionid-2Ch,
+.search-result-book-bar span.divisionid-Ezr,
+.search-result-book-bar span.divisionid-Neh,
+.search-result-book-bar span.divisionid-Ezr {
+	background: #8c8cca;
+}
+
+.search-result-book-bar span.divisionid-Job,
+.search-result-book-bar span.divisionid-PSa,
+.search-result-book-bar span.divisionid-PRo,
+.search-result-book-bar span.divisionid-Ecc,
+.search-result-book-bar span.divisionid-Son,
+.search-result-book-bar span.divisionid-Lam {
+	background: #c580c5;
+}
+
+.search-result-book-bar span.divisionid-Isa,
+.search-result-book-bar span.divisionid-Jer,
+.search-result-book-bar span.divisionid-Lam, 
+.search-result-book-bar span.divisionid-Eze,
+.search-result-book-bar span.divisionid-Dan {
+	background: #d38c8c;
+}
+
+.search-result-book-bar span.divisionid-Hos,
+.search-result-book-bar span.divisionid-Joe,
+.search-result-book-bar span.divisionid-Amo,
+.search-result-book-bar span.divisionid-Oba,
+.search-result-book-bar span.divisionid-Joh,
+.search-result-book-bar span.divisionid-Mic,
+.search-result-book-bar span.divisionid-Nah,
+.search-result-book-bar span.divisionid-Hak,
+.search-result-book-bar span.divisionid-Zep,
+.search-result-book-bar span.divisionid-Hag,
+.search-result-book-bar span.divisionid-Zec,
+.search-result-book-bar span.divisionid-Mal {
+	background: #d1d16a;
+}
+
+/* gospels */
+.search-result-book-bar span.divisionid-Mat,
+.search-result-book-bar span.divisionid-Mar,
+.search-result-book-bar span.divisionid-Luk,
+.search-result-book-bar span.divisionid-Joh {
+	background: #ffa2a2;
+}
+
+.search-result-book-bar span.divisionid-Act {
+	background: #c476aa;
+}
+
+.search-result-book-bar span.divisionid-Rom,
+.search-result-book-bar span.divisionid-1Co,
+.search-result-book-bar span.divisionid-2Co,
+.search-result-book-bar span.divisionid-Gal,
+.search-result-book-bar span.divisionid-Eph,
+.search-result-book-bar span.divisionid-Phi,
+.search-result-book-bar span.divisionid-Col,
+.search-result-book-bar span.divisionid-1Th,
+.search-result-book-bar span.divisionid-2Th,
+.search-result-book-bar span.divisionid-1Ti,
+.search-result-book-bar span.divisionid-2Ti,
+.search-result-book-bar span.divisionid-Tit,
+.search-result-book-bar span.divisionid-Phm {
+	background: #9c9ce1;
+}
+
+.search-result-book-bar span.divisionid-Heb,
+.search-result-book-bar span.divisionid-Jam,
+.search-result-book-bar span.divisionid-1Pe,
+.search-result-book-bar span.divisionid-2Pe,
+.search-result-book-bar span.divisionid-1Jo,
+.search-result-book-bar span.divisionid-2Jo,
+.search-result-book-bar span.divisionid-3Jo,
+.search-result-book-bar span.divisionid-Jud {
+	background: #8cc9c9;
+}
+
+.search-result-book-bar span.divisionid-Rev {
+	background: #9575a1;
+}
+
