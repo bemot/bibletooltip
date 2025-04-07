@@ -38,9 +38,23 @@ function fuzzySearchBooks(bookName) {
 }
 
 // Function to find verse text
+
+// Function to find verse text
 function getVerseText(reference) {
+  var bookName = "";
+  var chapterAndVerse = "";
   console.log("Finding verse text for reference:", reference);
-  const [bookName, chapterAndVerse] = reference.split(" ");
+  var splited = reference.split(" ");
+  console.log("Splited:", splited);
+  if (splited.length == 2) {
+    bookName = splited[0];
+    chapterAndVerse = splited[1];
+  }
+  if (splited.length == 3) {
+    bookName = splited[0] + splited[1];
+    chapterAndVerse = splited[2];
+  }
+
   const [chapterNumber, verseNumber] = chapterAndVerse.split(":").map(Number);
 
   const book = fuzzySearchBooks(bookName);
