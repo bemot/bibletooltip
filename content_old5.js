@@ -1,11 +1,9 @@
 // Improved Bible verse regular expression to handle various scenarios
-//const verseRegex =/(?:^|\s|\()([1-3]?\s*[A-Za-zА-Яа-яіїєІЇЄ]+(?:\s+[A-Za-zА-Яа-яіїєІЇЄ]+)*\s+\d{1,3}[.:]\d{1,3})(?=\s|\)|$|[.,;?!])/g;
-//(-\d+)?
 const verseRegex =
-  /(?:^|\s|\()([1-3]?\s*[A-Za-zА-Яа-яіїєІЇЄ]+(?:\s+[A-Za-zА-Яа-яіїєІЇЄ]+)*\s+\d{1,3}[.:]\d{1,3}(?:-\d{1,3})?)(?=\s|\)|$|[.,;?!])/g;
-
+  /(?:^|\s|\()([1-3]?\s*[A-Za-zА-Яа-яіїєІЇЄ]+(?:\s+[A-Za-zА-Яа-яіїєІЇЄ]+)*\s+\d{1,3}[.:]\d{1,3})(?=\s|\)|$|[.,;?!])/g;
 let bibleData = null;
 let fuse = null;
+
 // Fetch verses.json initially and prepare Fuse.js for fuzzy searching
 async function loadBibleData() {
   const response = await fetch(chrome.runtime.getURL("verses.json"));
