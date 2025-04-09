@@ -57,10 +57,7 @@ function getVerseText(reference) {
     chapterAndVerse = splited[2];
   }
 
-  const [chapterNumberStr, verseNumberStr] = chapterAndVerse.split(":");
-  //convert to numbers
-  const chapterNumber = parseInt(chapterNumberStr);
-  const verseNumber = parseInt(verseNumberStr);
+  const [chapterNumber, verseNumber] = chapterAndVerse.split(":").map(Number);
   console.log("bookName:", bookName);
   console.log("chapterNumber:", chapterNumber);
   //console.log("verseNumberArray:", verseNumberArray);
@@ -165,3 +162,5 @@ if (document.readyState === "loading") {
 } else {
   loadBibleData();
 }
+
+//const verseRegex = /(?:\b|\()([1-3]? ?[A-Za-zА-Яа-яіїєІЇЄ]+(?: [A-Za-zА-Яа-яіїєІЇЄ]+)* ?\d{1,3}[.:]\d{1,3})(?=\s|\)|$|[.,;?!])/g;
