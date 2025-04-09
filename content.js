@@ -40,31 +40,17 @@ function fuzzySearchBooks(bookName) {
 }
 
 // Function to find verse text
-
-// Function to find verse text
 function getVerseText(reference) {
-  var bookName = "";
-  var chapterAndVerse = "";
-  console.log("Finding verse text for reference:", reference);
-  var splited = reference.split(" ");
-  console.log("Splited:", splited);
-  if (splited.length == 2) {
-    bookName = splited[0];
-    chapterAndVerse = splited[1];
-  }
-  if (splited.length == 3) {
-    bookName = splited[0] + splited[1];
-    chapterAndVerse = splited[2];
-  }
+  let match = reference.match(
+    /^([1-3]?\s*[A-Za-zА-Яа-яіїєІЇЄ]+\s*[A-Za-zА-Яа-яіїєІЇЄ]*)(\s+\d+[:]\d+([,-]\d+)*)/,
+  );
+  if (!match) return null;
 
-  const [chapterNumberStr, verseNumberStr] = chapterAndVerse.split(":");
-  //convert to numbers
-  const chapterNumber = parseInt(chapterNumberStr);
-  const verseNumber = parseInt(verseNumberStr);
-  console.log("bookName:", bookName);
-  console.log("chapterNumber:", chapterNumber);
-  //console.log("verseNumberArray:", verseNumberArray);
-  console.log("verseNumber:", verseNumber);
+  let bookName = match[1].trim();
+  let chapterAndVerses = match[2].trim();
+  const chapterVerseSplit = chapterAndVerses.split(":");
+  const chapterNumber = parseInt(chapterVerseSplit[0]);
+  const verseNumbers = chapterVerseSplit[1];
 
   const book = fuzzySearchBooks(bookName);
   if (!book) return null;
@@ -72,8 +58,29 @@ function getVerseText(reference) {
   const chapter = book.chapters.find((c) => c.chapter === chapterNumber);
   if (!chapter) return null;
 
-  const verse = chapter.verses.find((v) => v.verse === verseNumber);
-  return verse ? verse.text : null;
+  // Initialize verseTexts array to collect texts of all verses
+  let verseTexts = [];
+
+  // Check if there is a range or list of verses
+  if (verseNumbers.includes("-")) {
+    const [start, end] = verseNumbers.split("-").map(Number);
+    for (let v = start; v <= end; v++) {
+      const verse = chapter.verses.find((verse) => verse.verse === v);
+      if (verse) verseTexts.push(`${v}: ${verse.text}`);
+    }
+  } else if (verseNumbers.includes(",")) {
+    const verses = verseNumbers.split(",").map(Number);
+    verses.forEach((v) => {
+      const verse = chapter.verses.find((verse) => verse.verse === v);
+      if (verse) verseTexts.push(`${v}: ${verse.text}`);
+    });
+  } else {
+    const verseNumber = parseInt(verseNumbers);
+    const verse = chapter.verses.find((verse) => verse.verse === verseNumber);
+    if (verse) verseTexts.push(`${verseNumber}: ${verse.text}`);
+  }
+
+  return verseTexts.join("; ");
 }
 
 // Enhance links that contain Bible verses
