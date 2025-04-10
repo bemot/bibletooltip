@@ -44,10 +44,14 @@ function correctBookName(booknameforcorrection) {
   const bookNameMappings = {
     См: "Самуїлова",
     Цр: "Царів",
+    Цар: "Царів",
+    Царств: "Царів",
+
     Хр: "Хроніки",
     Ів: "Івана",
     Пт: "Петра",
     Пет: "Петра",
+    Петр: "Петра",
     Кор: "до Коринтян",
     Кр: "до Коринтян",
     Сол: "до Солунян",
@@ -61,14 +65,21 @@ function correctBookName(booknameforcorrection) {
 
   if (booknameforcorrection === "Ів" || booknameforcorrection === "Ів.")
     booknameforcorrection = "Від Івана";
+  if (booknameforcorrection === "Івана") booknameforcorrection = "Від Івана";
+
   if (booknameforcorrection === "Мт" || booknameforcorrection === "Мт.")
     booknameforcorrection = "Від Матвія";
   if (booknameforcorrection === "Лк" || booknameforcorrection === "Лк.")
     booknameforcorrection = "Від Луки";
   if (booknameforcorrection === "Мр" || booknameforcorrection === "Мр.")
     booknameforcorrection = "Від Марка";
+  if (booknameforcorrection === "Мк" || booknameforcorrection === "Мк.")
+    booknameforcorrection = "Від Марка";
+
   if (booknameforcorrection === "Євр" || booknameforcorrection === "Євр.")
     booknameforcorrection = "До Євреїв";
+  if (booknameforcorrection === "Флп" || booknameforcorrection === "Флп.")
+    booknameforcorrection = "До Филип'ян";
 
   const matches = booknameforcorrection.match(regex);
 
