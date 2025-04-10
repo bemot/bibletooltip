@@ -39,6 +39,52 @@ function fuzzySearchBooks(bookName) {
   return result.length ? result[0].item : null;
 }
 
+function correctBookName(booknameforcorrection) {
+  // Dictionary mapping book name abbreviations and numbers to full names
+  const bookNameMappings = {
+    См: "Самуїлова",
+    Цр: "Царів",
+    Хр: "Хроніки",
+    Ів: "Івана",
+    Пт: "Петра",
+    Пет: "Петра",
+    Кор: "до Коринтян",
+    Кр: "до Коринтян",
+    Сол: "до Солунян",
+    Сл: "до Солунян",
+    Тим: "Тимофію",
+    Тм: "Тимофію",
+  };
+
+  // Regular expression to capture book number and abbreviation
+  const regex = /^(\d*)\s*([А-Яа-я]+)\.?$/;
+
+  if (booknameforcorrection === "Ів" || booknameforcorrection === "Ів.")
+    booknameforcorrection = "Від Івана";
+  if (booknameforcorrection === "Мт" || booknameforcorrection === "Мт.")
+    booknameforcorrection = "Від Матвія";
+  if (booknameforcorrection === "Лк" || booknameforcorrection === "Лк.")
+    booknameforcorrection = "Від Луки";
+  if (booknameforcorrection === "Мр" || booknameforcorrection === "Мр.")
+    booknameforcorrection = "Від Марка";
+  if (booknameforcorrection === "Євр" || booknameforcorrection === "Євр.")
+    booknameforcorrection = "До Євреїв";
+
+  const matches = booknameforcorrection.match(regex);
+
+  if (matches) {
+    const [_, number, abbreviation] = matches;
+    const roman = ["I", "II", "III"][parseInt(number) - 1]; // Convert numbers 1, 2, 3 to Roman numerals
+
+    if (abbreviation in bookNameMappings) {
+      return `${roman} ${bookNameMappings[abbreviation]}`;
+    }
+  }
+
+  // Return original name if no pattern matches or abbreviation not in dictionary
+  return booknameforcorrection;
+}
+
 // Function to find verse text
 function getVerseText(reference) {
   let match = reference.match(
@@ -46,12 +92,14 @@ function getVerseText(reference) {
   );
   if (!match) return null;
 
-  let bookName = match[1].trim();
+  let bookName = correctBookName(match[1].trim());
   let chapterAndVerses = match[2].trim();
   const chapterVerseSplit = chapterAndVerses.split(":");
   const chapterNumber = parseInt(chapterVerseSplit[0]);
   const verseNumbers = chapterVerseSplit[1];
-
+  console.log("Book Name:", bookName);
+  console.log("Chapter Number:", chapterNumber);
+  console.log("Verse Numbers:", verseNumbers);
   const book = fuzzySearchBooks(bookName);
   if (!book) return null;
 
